@@ -5,6 +5,7 @@ subtitle:   "or the preface of something entirely new."
 date:       2017-09-24 22:30:00
 author:     "lightningspirit"
 header-img: "assets/images/azores-green-mountain.jpg"
+comments: true
 ---
 
 Often, the first post of a new blog has to explain the purpose, the reason why one starts to write something entirely new. Sometimes, the reason just urges and grows from the bottom of your deepest desires.
@@ -46,3 +47,7 @@ Like all other islands, Faial also holds a very volatile weather.
 </div>
 
 If you're interested in visit Azores, go to [Visit Azores](https://www.visitazores.com/en). There's lot of information you can use to help in your trip.
+
+<hr>
+
+{% include comments.html %}
