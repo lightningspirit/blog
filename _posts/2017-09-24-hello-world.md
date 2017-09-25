@@ -19,18 +19,27 @@ I believe, this is the best reason I can provide for now.
 
 <hr>
 
-This summer me and my lovely one, we spent over 2 weeks in some Azores Islands, in the middle of Atlantic Ocean. *Terrific* is the word I use to describe this experience. A naturally harvested paradise, an archipelago of 8 islands mixing naturally crafted landscapes where one can hike towards small villages 20 minutes away from central towns.
+This summer me and my lovely one, we spent over 2 weeks in some Azores Islands, in the middle of Atlantic Ocean. 
+
+*Terrific* is the word I use to describe this experience. A naturally harvested paradise, an archipelago of 8 islands mixing naturally crafted landscapes where one can hike towards small villages 30 minutes away from central towns.
 
 <img src="{{ site.baseurl }}/assets/images/azores-green-mountain-ocean.jpg" class="img-fluid" alt="Sao Jorge Island, Azores, while walking to Faja de Santo Cristo.">
 <span class="caption text-muted">Sao Jorge Island, Azores, while walking to Faja de Santo Cristo.</span>
 
-Azores was [allegedly first dicovered by Diogo de Silves](https://en.wikipedia.org/wiki/History_of_the_Azores) in 1415. He was the one who discovered the most eastern cluster. Afterwards, some other discoveries took place during that century. One of the most convincing is *Sao Jorge* island.
+Azores was [allegedly first dicovered by Diogo de Silves](https://en.wikipedia.org/wiki/History_of_the_Azores) in 1415. He was the one who found the most eastern cluster (*Santa Maria* and *Sao Miguel* islands). As the time pass, some other discoveries took place during that century. 
+
+One of the most convincing island is *Sao Jorge*. Its natural beauty with all thi fantastic landscapes and almost all seasons happening during the same day, makes it one of my favorite, I must say!
 
 <div class="embed-responsive embed-responsive-16by9">
     <iframe  class="embed-responsive-item" src="https://www.youtube.com/embed/Yy4-lEeNX-o" allowfullscreen></iframe>
 </div>
 
-Faial Island is where most of the trans-atlantic ships take a nap. 
+*Faial* Island is where most of the trans-atlantic ships take a rest and drink some *Gin do Mare*  at *Peter's Café Sport*. It's very well known at the space this is the spot where sailors stop by for a couple of days enjoying their meals. It's been around there serving transients since the second half of 18th Century.
+
+<img src="{{ site.baseurl }}/assets/images/azores-faial-peter-cafe-sport.jpg" class="img-fluid" alt="Peter's Cafe Sport, Horta, Faial, Azores.">
+<span class="caption text-muted">Peter's Cafe Sport in the ciry of Horta, Faial island, Azores.</span>
+
+Like all other islands, Faial also holds a very volatile weather.
 
 <div class="embed-responsive embed-responsive-16by9">
     <iframe  class="embed-responsive-item" src="https://www.youtube.com/embed/WBhPF8_qaYc" allowfullscreen></iframe>
