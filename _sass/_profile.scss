@@ -1,0 +1,27 @@
+.profile {
+
+    .avatar {
+        border-radius: 100%;
+        border: 5px solid white;
+        width: 10em;
+        height: 10em;
+        background: no-repeat center center;
+        @include background-cover;
+        margin: -8em auto 0;
+        box-shadow: 0 1.5px 3px 0 rgba(0,0,0,.15), 0 1.5px 3px 0 rgba(0,0,0,.15);
+        background-color: rgba(243,246,248,.94);
+        box-sizing: content-box;
+    }
+
+    .site-heading {
+        h1 {
+            font-size: 2em !important;
+        }
+
+        @media only screen and (min-width: 768px) {
+            h1 {
+                font-size: 2.5em !important;
+            }
+        }
+    }
+}

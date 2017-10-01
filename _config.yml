@@ -1,29 +1,18 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
 title: Lightningspirit's Blog
 email: lightningspirit+blog@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   Programmer, Hacker, Architect, Entrepreneur, Story Teller, Musician.
   Mathematics and Astrophysics passionate. User Experience lover.
   I'm just a spiritual being having a human experience.
+copyright_name: "lightningspirit"
+
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://lightningspirit.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://lightningspir.it" # the base hostname & protocol for your site, e.g. http://example.com
+author: lightningspirit
+permalink: none
 
 # Social Media
-twitter_username: lightningspirit
+twitter_username: wpforms
 github_username: lightningspirit
 facebook_username: lightningspirit
 email_username: lightningspirit+blog@gmail.com
@@ -39,8 +28,20 @@ google_tracking_id: UA-106952457-1
 markdown: kramdown
 highlighter: rouge
 permalink: pretty
-theme: clean-blog-jekyll-theme
 
 paginate: 5
+
+exclude: 
+  - README.md 
+  - node_modules
+  - gulpfile.js
+  - package.json
+  - package-lock.json
+  - Gemfile
+  - Gemfile.lock
+
+plugins:
+  - jekyll-paginate
+
 sass:
-  style: :compressed
+    style: compressed

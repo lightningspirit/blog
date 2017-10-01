@@ -1,0 +1,25 @@
+{
+  "name": "lightningspirit-blog",
+  "version": "1.0.0",
+  "description": "Lightningspirit's Blog",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-minify": "^1.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lightningspirit/blog.git"
+  },
+  "author": "lightningspirit@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lightningspirit/blog/issues"
+  },
+  "homepage": "https://github.com/lightningspirit/blog#readme"
+}

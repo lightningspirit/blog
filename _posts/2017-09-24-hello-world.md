@@ -6,9 +6,12 @@ date:       2017-09-24 22:30:00
 author:     "lightningspirit"
 header-img: "assets/images/azores-green-mountain.jpg"
 comments: true
+tags: "hello, world, azores, firstpost"
 ---
 
 Often, the first post of a new blog has to explain the purpose, the reason why one starts to write something entirely new. Sometimes, the reason just urges and grows from the bottom of your deepest desires.
+
+<!--more-->
 
 Some years ago I owned a personal website on lightningspirit.net domain, filled up with some crazy and "unimportant" stuff even with thoughts that nowadays would make me blush... whatever!
 

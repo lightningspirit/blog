@@ -1,0 +1,37 @@
+---
+layout: default
+---
+
+<!-- Post Header -->
+<header class="masthead" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+                    <span class="subheading">{{ page.description }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="avatar" style="background-image: url('{{ site.baseurl }}/{% if page.avatar %}{{ page.avatar }}{% else %}{{ site.avatar }}{% endif %}')"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                {{ content }}
+
+                {% include posts.html %}
+            </div>
+        </div>
+    </div>
+</article>
+
+<hr>
