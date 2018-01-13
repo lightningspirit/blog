@@ -36,8 +36,10 @@ exclude:
   - gulpfile.js
   - package.json
   - package-lock.json
+  - config.ru
   - Gemfile
   - Gemfile.lock
+  - vendor
   - .ruby-version
 
 plugins:

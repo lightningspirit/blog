@@ -29,12 +29,6 @@ gulp.task('images:optimize', () =>
     .pipe(gulp.dest('_site/assets/images/'))
 );
 
-gulp.task('dokku', function() {
-    return gulp.src('.')
-    .pipe(file('.static', ''))
-    .pipe(gulp.dest('_site/'));
-});
-
 gulp.task('default', [
-    'html:minifier', 'js:concat', 'images:optimize', 'dokku'
+    'html:minifier', 'js:concat', 'images:optimize'
 ]);
