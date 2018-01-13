@@ -9,7 +9,6 @@ copyright_name: "lightningspirit"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://lightningspir.it" # the base hostname & protocol for your site, e.g. http://example.com
 author: lightningspirit
-permalink: none
 
 # Social Media
 twitter_username: wpforms
@@ -27,7 +26,7 @@ google_tracking_id: UA-106952457-1
 # Build settings
 markdown: kramdown
 highlighter: rouge
-permalink: pretty
+permalink: none
 
 paginate: 5
 
@@ -39,6 +38,7 @@ exclude:
   - package-lock.json
   - Gemfile
   - Gemfile.lock
+  - .ruby-version
 
 plugins:
   - jekyll-paginate

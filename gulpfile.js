@@ -3,6 +3,7 @@ const concat = require('gulp-concat');
 const minify = require('gulp-minify');
 const htmlmin = require('gulp-htmlmin');
 const imagemin = require('gulp-imagemin');
+const file = require('gulp-file')
 
 gulp.task('html:minifier', () =>
     gulp.src('_site/**/*.html')
@@ -28,6 +29,12 @@ gulp.task('images:optimize', () =>
     .pipe(gulp.dest('_site/assets/images/'))
 );
 
+gulp.task('dokku', function() {
+    return gulp.src('.')
+    .pipe(file('.static', ''))
+    .pipe(gulp.dest('_site/'));
+});
+
 gulp.task('default', [
-    'html:minifier', 'js:concat', 'images:optimize'
+    'html:minifier', 'js:concat', 'images:optimize', 'dokku'
 ]);

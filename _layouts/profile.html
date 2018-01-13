@@ -2,8 +2,10 @@
 layout: default
 ---
 
+<main class="wrapper">
+
 <!-- Post Header -->
-<header class="masthead" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
+<header class="masthead" style="background: url('/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}'); background-size: cover; background-repeat: no-repeat;" data-paroller-factor="-0.9">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
@@ -33,5 +35,7 @@ layout: default
         </div>
     </div>
 </article>
+
+</main>
 
 <hr>
