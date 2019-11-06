@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-starter-blog-typescript",
+  "name": "lightningspirit-blog",
   "private": true,
-  "description": "A starter gatsby blog using typescript",
-  "version": "0.1.0",
-  "author": "Greg Perlman <gperlman27@gmail.com>",
+  "description": "Lightningspirit blog",
+  "version": "2.0.0",
+  "author": "Vitor Carvalho <lightningspirit@gmail.com>",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/lightningspirit/blog/issues"
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
@@ -62,15 +62,14 @@
     "tslint-react": "^4.0.0",
     "typescript": "^3.4.5"
   },
-  "homepage": "https://github.com/gperl27/Gatsby-Starter-Blog-Typescript#readme",
+  "homepage": "https://github.com/lightningspirit/blog#readme",
   "keywords": [
     "gatsby"
   ],
   "license": "MIT",
-  "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gperl27/Gatsby-Starter-Blog-Typescript.git"
+    "url": "git+https://github.com/lightningspirit/blog.git"
   },
   "scripts": {
     "build": "gatsby build",
