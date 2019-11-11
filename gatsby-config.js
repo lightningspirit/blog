@@ -1,11 +1,13 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: `Kyle Mathews`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    title: `Lightningspirit's Blog`,
+    author: `Vitor De Carvalho`,
+    description: `Programmer, Hacker, Architect, Entrepreneur, Story Teller, Musician. Mathematics and Astrophysics passionate. User Experience lover. I'm just a spiritual being having a human experience.`,
+    siteUrl: `https://lightningspir.it/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `lightningspiri3`,
+      instagram: `lightningspirit`,
+      github: `lightningspirit`,
     },
   },
   plugins: [
@@ -30,7 +32,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
+              maxWidth: 1920,
             },
           },
           {
@@ -50,20 +52,20 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: `UA-106952457-1`,
       },
     },
     `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Lightningspirit's Blog`,
+        short_name: `Lightningspirit`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#663399`,
+        theme_color: `#4c566a`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/icon.png`,
       },
     },
     `gatsby-plugin-offline`,

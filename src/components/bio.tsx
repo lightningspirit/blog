@@ -26,15 +26,19 @@ const Avatar = styled(GatsbyImage)`
   border-radius: 100%;
   margin-bottom: 0;
   margin-right: ${rhythm(1 / 2)};
-  min-width: 50px;
+  min-width: 80px;
+  max-height: 80px;
+  border: 3px solid #fff;
+  box-shadow: 0 1.5px 3px 0 rgba(0, 0, 0, 0.15),
+    0 1.5px 3px 0 rgba(0, 0, 0, 0.15);
 `
 
 export const Bio = () => {
   const data = useStaticQuery(graphql`
     query BioQuery {
-      avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
+      avatar: file(absolutePath: { regex: "/avatar.jpg/" }) {
         childImageSharp {
-          fixed(width: 50, height: 50) {
+          fixed(width: 120, height: 120) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -57,15 +61,23 @@ export const Bio = () => {
       <Avatar
         fixed={data.avatar.childImageSharp.fixed}
         alt={author}
-        imgStyle={{ borderRadius: "50%" }}
+        imgStyle={{ borderRadius: "100%" }}
       />
       <p>
-        Written by <strong>{author}</strong> who lives and works in San
-        Francisco building useful things.
-        {` `}
-        <a href={`https://twitter.com/${social.twitter}`}>
-          You should follow him on Twitter
+        Written by <strong>{author}</strong>, Software Developer, Hacker,
+        Musician, Astrophysics lover, who lives in sunny{" "}
+        <a href="https://duckduckgo.com/?q=lisbon+portugal" target="_blank">
+          Lisbon, Portugal
         </a>
+        .
+        <br />
+        Follow me on
+        {` `}
+        <a href={`https://twitter.com/${social.twitter}`}>Twitter</a>
+        {` `}
+        <a href={`https://github.com/${social.github}`}>Github</a>
+        {` `}
+        <a href={`https://instagram.com/${social.instagram}`}>Instagram</a>
       </p>
     </Content>
   )

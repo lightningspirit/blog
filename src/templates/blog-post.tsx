@@ -1,5 +1,12 @@
 import { graphql, PageRendererProps } from "gatsby"
+import Img from "gatsby-image"
+// tslint:disable-next-line:no-submodule-imports
+import hljs from "highlight.js/lib/highlight"
+// tslint:disable-next-line:no-submodule-imports
+import javascript from "highlight.js/lib/languages/javascript"
 import React from "react"
+import ReactDisqusComments from "react-disqus-comments"
+import LazyLoad from "react-lazy-load"
 import styled from "styled-components"
 import { Bio } from "../components/bio"
 import { Layout } from "../components/layout"
@@ -7,6 +14,8 @@ import { FadeLink } from "../components/link"
 import { SEO } from "../components/seo"
 import { Query, SitePageContext } from "../graphql-types"
 import { rhythm, styledScale } from "../utils/typography"
+
+hljs.registerLanguage("javascript", javascript)
 
 interface Props extends PageRendererProps {
   pageContext: SitePageContext
@@ -32,6 +41,11 @@ const PostNavigator = styled.ul`
   padding: 0;
 `
 
+const ImageHeight = styled.div`
+  max-height: 50vh;
+  overflow: hidden;
+`
+
 const BlogPostTemplate = (props: Props) => {
   const data = props.data!
   const post = data.markdownRemark!
@@ -42,33 +56,57 @@ const BlogPostTemplate = (props: Props) => {
   const { previous, next } = props.pageContext
 
   return (
-    <Layout location={props.location} title={siteTitle}>
-      <SEO
-        title={frontmatter.title!}
-        description={frontmatter.description || excerpt}
-      />
-      <h1>{post.frontmatter!.title}</h1>
-      <Date>{frontmatter.date}</Date>
-      <div dangerouslySetInnerHTML={{ __html: html }} />
-      <Divider />
-      <Bio />
-      <PostNavigator>
-        <li>
-          {previous && (
-            <FadeLink to={previous.fields!.slug!} rel="prev">
-              ← {previous.frontmatter!.title}
-            </FadeLink>
-          )}
-        </li>
-        <li>
-          {next && (
-            <FadeLink to={next.fields!.slug!} rel="next">
-              {next.frontmatter!.title} →
-            </FadeLink>
-          )}
-        </li>
-      </PostNavigator>
-    </Layout>
+    <>
+      {frontmatter.image && (
+        <ImageHeight>
+          <Img fluid={frontmatter.image!.childImageSharp.fluid} />
+        </ImageHeight>
+      )}
+      <Layout location={props.location} title={siteTitle}>
+        <SEO
+          title={frontmatter.title!}
+          description={frontmatter.description || excerpt}
+        />
+        <h1>{post.frontmatter!.title}</h1>
+        <Date>{frontmatter.date}</Date>
+        <div dangerouslySetInnerHTML={{ __html: html }} />
+        <Divider />
+        {frontmatter.tags && (
+          <p>
+            <small>
+              <b>Tags:</b> {frontmatter.tags}
+            </small>
+          </p>
+        )}
+        <Divider />
+        <Bio />
+        {frontmatter.comments && (
+          <LazyLoad offsetTop={400}>
+            <ReactDisqusComments
+              shortname="https-lightningspirit-github-io"
+              identifier={post.id}
+              title={frontmatter.title!}
+            />
+          </LazyLoad>
+        )}
+        <PostNavigator>
+          <li>
+            {previous && (
+              <FadeLink to={previous.fields!.slug!} rel="prev">
+                ← {previous.frontmatter!.title}
+              </FadeLink>
+            )}
+          </li>
+          <li>
+            {next && (
+              <FadeLink to={next.fields!.slug!} rel="next">
+                {next.frontmatter!.title} →
+              </FadeLink>
+            )}
+          </li>
+        </PostNavigator>
+      </Layout>
+    </>
   )
 }
 
@@ -90,6 +128,15 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        comments
+        tags
+        image {
+          childImageSharp {
+            fluid(maxWidth: 1600) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }

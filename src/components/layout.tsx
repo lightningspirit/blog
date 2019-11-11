@@ -10,7 +10,7 @@ interface Props extends PageRendererProps {
 }
 
 const StyledH1 = styled.h1`
-  ${styledScale(1.5)};
+  ${styledScale(1)};
   margin-bottom: ${rhythm(1.5)};
   margin-top: 0;
 `
@@ -48,9 +48,13 @@ export const Layout = (props: Props) => {
       </header>
       <main>{children}</main>
       <footer>
-        © {new Date().getFullYear()}, Built with
         {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
+        <p className="copyright text-muted">
+          <small>
+            Copyright © lightningspirit {new Date().getFullYear()} | Built with{" "}
+            <a href="https://www.gatsbyjs.org">Gatsby</a>
+          </small>
+        </p>
       </footer>
     </Content>
   )

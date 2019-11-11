@@ -1,3 +1,5 @@
+import { FluidObject } from "gatsby-image"
+
 export type Maybe<T> = T | null
 /** All built-in and custom scalars, mapped to their actual values */
 export interface Scalars {
@@ -1384,9 +1386,12 @@ export interface MarkdownRemarkFilterInput {
 }
 
 export interface MarkdownRemarkFrontmatter {
+  image?: FluidObject | undefined
   title?: Maybe<Scalars["String"]>
   date?: Maybe<Scalars["Date"]>
   description?: Maybe<Scalars["String"]>
+  comments?: Maybe<Scalars["String"]>
+  tags?: Maybe<Scalars["String"]>
 }
 
 export interface MarkdownRemarkFrontmatterDateArgs {
