@@ -10,7 +10,7 @@ tags: "ssh, bad permissions, chmod, publickey, authentication"
 
 So, I just tried to setup a login via public key to a new server and somehow got into the following error:
 
-```js
+```bash
 debug1: SSH2_MSG_NEWKEYS sent
 debug1: expecting SSH2_MSG_NEWKEYS
 debug1: SSH2_MSG_NEWKEYS received
@@ -22,6 +22,7 @@ debug1: Offering RSA public key: /Users/lightningspirit/.ssh/id_rsa
 debug1: Authentications that can continue: publickey,gssapi-keyex,gssapi-with-mic,password
 debug1: Next authentication method: password
 ```
+
 Da hell?!
 
 That wasn't useful at all... was my SSH config misconfigured? The client first offered the `publickey` authentication however that was skipped.
