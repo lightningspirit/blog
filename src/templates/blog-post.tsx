@@ -1,9 +1,7 @@
 import { graphql, PageRendererProps } from "gatsby"
 import Img from "gatsby-image"
 // tslint:disable-next-line:no-submodule-imports
-import hljs from "highlight.js/lib/highlight"
-// tslint:disable-next-line:no-submodule-imports
-import javascript from "highlight.js/lib/languages/javascript"
+import "prismjs/themes/prism-tomorrow.css"
 import React from "react"
 import ReactDisqusComments from "react-disqus-comments"
 import LazyLoad from "react-lazy-load"
@@ -14,8 +12,6 @@ import { FadeLink } from "../components/link"
 import { SEO } from "../components/seo"
 import { Query, SitePageContext } from "../graphql-types"
 import { rhythm, styledScale } from "../utils/typography"
-
-hljs.registerLanguage("javascript", javascript)
 
 interface Props extends PageRendererProps {
   pageContext: SitePageContext
