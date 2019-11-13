@@ -58,7 +58,7 @@ There's also [_Pico_ island](https://en.wikipedia.org/wiki/Mount_Pico), holding 
 
 You're given a permission to stay for 24h in the natural park, so, if you want, you can camping in the pit crater rim of _Pico Alto_, in the mountain, and see the fantastic night sky full of starts. Otherwise, you can start climbing before the sunrise and try to climb to the very top pinnacle _Piquinho_.
 
-If you want to rest a bit, make sure you visit and stay at _[Lajes do Pico](https://en.wikipedia.org/wiki/Lajes_do_Pico)_ town. It's a small and very traditional village. I found people there very rustic and interesting.
+If you want to rest a bit, make sure you visit and stay at [Lajes do Pico](https://en.wikipedia.org/wiki/Lajes_do_Pico) town. It's a small and very traditional village. I found people there very rustic and interesting.
 
 Overall, the Azores experience is one of the greatest. You feel connected to nature, very close (30 min, tops) to the biggest towns. The local people are very amazing and always willing to help you everywhere, very pleasant. The local food is great, and the landscapes, superb!
 

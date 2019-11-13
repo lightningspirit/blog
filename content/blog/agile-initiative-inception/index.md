@@ -5,12 +5,12 @@ date:         2019-08-18 21:30:00
 author:       "lightningspirit"
 image:        "./close-up-photo-of-gray-concrete-road-1197095.jpg"
 comments:     true
-tags:         "agile, initiative, inception"
+tags:         "agile, initiative, forecast improve, team management"
 ---
 
-Do you remember the kick-off day for the initiative you're currently involved in?
+Do you remember the kick-off day for the initiative you're currently involved?
 
-What about the first meetings where everyone was super excited and in aagreement?
+What about the first meetings where everyone was super excited and in agreement?
 
 That general positive spreading throughout the room, that lovely shiny feeling
 of a new thing to develop. How awesome was that, right?
@@ -21,10 +21,10 @@ Do you feel the same way?
 Yes? No?
 
 **There's a strong probability that you're not feeling well** with all the struggling,
-deadlines, misunderstandings on basic concepts, dealignment... is that so?
+deadlines, misunderstandings on basic concepts, dealignment. Is that so?
 
-Well, that happens a lot... most of the time... I'd even say every time, and there's a reason
-why that happens: it's because you, your teammates, your Product Owner, your Engineering Manager
+Well, that happens a lot. I'd even say every time, and there's a reason
+why that happens: it's because that you, your teammates, your Product Owner, your Engineering Manager
 and even all stakeholders are different people, each one with they're own baggage, conceptions, and agreement on
 what to develop.
 
@@ -50,7 +50,7 @@ That's astonishingly fast! However, that only works on simple daily activities.
 
 I believe so, and I think *Agile* practices, namely *Scrum* methodology, might be a truth strength beneath it.
 
-But wait... isn't *Agile* about small deliverables and consistent pacing without worrying too much on the big picture?
+But wait, isn't *Agile* about small deliverables and consistent pacing without worrying too much on the big picture?
 In part, it is a bit, but it is also about **great communication**, **better acknowledgment**, **forecasting**, and **collaboration**.
 
 ## Welcome to the *Agile Initiative Inception*
@@ -126,7 +126,7 @@ on scope, know which **teams need to be involved** and what external dependencie
 need to be resolved.
 
 Keep in mind that this is only a high-level overview as the details for each item/topic
-should be aligned in different sessions such as a *User Story Mapping*.
+should be aligned in different sessions, such as a *User Story Mapping*.
 
 ## Show your solution
 
@@ -157,24 +157,24 @@ if they **worth tackling or not** - be conservative in this phase. The recommend
 for each topic is about 10 minutes of discussion.
 
 Last but not least, take out the *Unresolved* ideas and drive discussions for each one
-in the same way you did for the ones within *Scope*.
+like you did for the ones within *Scope*.
 
 If you can't find an agreement, place that item in a *Parking Lot* for further discussion
 in a different forum and move on to the next one.
 
 ## User Story Mapping
 
-Now with all the work we did before, we're prepared to run one or more *User Story Mapping* sessions
+Now with all the work we did before, we're prepared to run one or more *[User Story Mapping](https://app.mindsettlers.com/guide/6y2yApgsr6gy2MY0mSQ8U6)* sessions
 where the Product scope is clear, and everyone is ready to deep dive into the user journeys.
 
 ## Conclusions
 
 The described methodology is a high-level framework to involve everyone during the Product design phase.
-Whenever you feel you need alignment you should run it.
+Whenever you feel you need to find common ground, you should run it.
 
 I think this tool can help teams to define a vision, scope
 and requirements of an initiative for the next steps and unblock some inconsistencies
-and miscommunication that sometimes appear during development phases.
+and miscommunication that sometimes appears during development phases.
 
 If you find this useful or you already used this in your team, please leave a comment below.
 Share your feedback so others can benefit from it.
