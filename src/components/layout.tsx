@@ -52,7 +52,9 @@ export const Layout = (props: Props) => {
         <p className="copyright text-muted">
           <small>
             Copyright © lightningspirit {new Date().getFullYear()} | Built with{" "}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
+            <a href="https://www.gatsbyjs.org" rel="nofollow" target="_blank">
+              Gatsby
+            </a>
           </small>
         </p>
       </footer>

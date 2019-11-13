@@ -3,10 +3,13 @@ module.exports = {
     title: `Lightningspirit's Blog`,
     author: `Vitor De Carvalho`,
     description: `Programmer, Hacker, Architect, Entrepreneur, Story Teller, Musician. Mathematics and Astrophysics passionate. User Experience lover. I'm just a spiritual being having a human experience.`,
+    keywords: [
+      `software development`, `personal blog`, `music creation`
+    ],
     siteUrl: `https://lightningspir.it/`,
     social: {
       twitter: `lightningspiri3`,
-      instagram: `lightningspirit`,
+      soundcloud: `lightningspirit`,
       github: `lightningspirit`,
     },
   },

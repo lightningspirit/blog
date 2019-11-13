@@ -48,6 +48,8 @@ export const Bio = () => {
           author
           social {
             twitter
+            github
+            soundcloud
           }
         }
       }
@@ -66,18 +68,40 @@ export const Bio = () => {
       <p>
         Written by <strong>{author}</strong>, Software Developer, Hacker,
         Musician, Astrophysics lover, who lives in sunny{" "}
-        <a href="https://duckduckgo.com/?q=lisbon+portugal" target="_blank">
+        <a
+          href="https://duckduckgo.com/?q=lisbon+portugal"
+          rel="nofollow"
+          target="_blank"
+        >
           Lisbon, Portugal
         </a>
         .
         <br />
         Follow me on
         {` `}
-        <a href={`https://twitter.com/${social.twitter}`}>Twitter</a>
+        <a
+          href={`https://twitter.com/${social.twitter}`}
+          rel="nofollow"
+          target="_blank"
+        >
+          Twitter
+        </a>
         {` `}
-        <a href={`https://github.com/${social.github}`}>Github</a>
+        <a
+          href={`https://github.com/${social.github}`}
+          rel="nofollow"
+          target="_blank"
+        >
+          Github
+        </a>
         {` `}
-        <a href={`https://instagram.com/${social.instagram}`}>Instagram</a>
+        <a
+          href={`https://soundcloud.com/${social.soundcloud}`}
+          rel="nofollow"
+          target="_blank"
+        >
+          Soundcloud
+        </a>
       </p>
     </Content>
   )

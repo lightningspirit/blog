@@ -69,9 +69,7 @@ const BlogPostTemplate = (props: Props) => {
         <Divider />
         {frontmatter.tags && (
           <p>
-            <small>
-              <b>Tags:</b> {frontmatter.tags}
-            </small>
+            <b>Keywords:</b> {frontmatter.tags}
           </p>
         )}
         <Divider />

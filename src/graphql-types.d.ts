@@ -1385,8 +1385,14 @@ export interface MarkdownRemarkFilterInput {
   wordCount?: Maybe<WordCountFilterInput>
 }
 
+export interface MarkdownRemarkFrontmatterImage {
+  childImageSharp: {
+    fluid: FluidObject
+  }
+}
+
 export interface MarkdownRemarkFrontmatter {
-  image?: FluidObject | undefined
+  image?: Maybe<MarkdownRemarkFrontmatterImage>
   title?: Maybe<Scalars["String"]>
   date?: Maybe<Scalars["Date"]>
   description?: Maybe<Scalars["String"]>

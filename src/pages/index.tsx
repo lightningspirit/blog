@@ -24,6 +24,8 @@ const BlogIndex = (props: Props) => {
       site {
         siteMetadata {
           title
+          keywords
+          description
         }
       }
       allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
@@ -46,13 +48,12 @@ const BlogIndex = (props: Props) => {
 
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
+  const keywords = data.site.siteMetadata.keywords
+  const description = data.site.siteMetadata.description
 
   return (
     <Layout location={props.location} title={siteTitle}>
-      <SEO
-        title="All posts"
-        keywords={[`blog`, `gatsby`, `javascript`, `react`]}
-      />
+      <SEO title="All posts" keywords={keywords} description={description} />
       <Bio />
       {posts.map(({ node }: { node: MarkdownRemark }) => {
         const frontmatter = node!.frontmatter!
