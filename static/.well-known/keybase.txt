@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/lightningspirit
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://lightningspir.it
+  * I am lightningspirit (https://keybase.io/lightningspirit) on keybase.
+  * I have a public key ASAKOuYdAbNtdX7UwfXlfG6m82-lxkIriPhmpypBJTNVIgo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "012008d99675ec0997b04543a9a99c40107bea2ff6470f189def2bbca9682e48e3470a",
+      "host": "keybase.io",
+      "kid": "01200a3ae61d01b36d757ed4c1f5e57c6ea6f36fa5c6422b88f866a72a41253355220a",
+      "uid": "c9d085fa0ff798921e6aeaf33359ef19",
+      "username": "lightningspirit"
+    },
+    "merkle_root": {
+      "ctime": 1574099490,
+      "hash": "fc6ba33bd53f267e84cfd5c142b929e6140c5a50f133273e294711c11df863e04f09c83e88c5af31ef1f84c37002a06155d23266d6e69280e5222d2c86bb319b",
+      "hash_meta": "f0a39d7223fb22476e6cd10a59b547dfa3c6ffe41e76ff1e13f03b952241ec21",
+      "seqno": 10097039
+    },
+    "service": {
+      "entropy": "XLmksXWkr/MG0pA7bSZR84zV",
+      "hostname": "lightningspir.it",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "5.0.0"
+  },
+  "ctime": 1574099492,
+  "expire_in": 504576000,
+  "prev": "856f04908ed041e67452b36d2b7437ed755bcfb8e71e613315f3f80c256a292a",
+  "seqno": 52,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgCjrmHQGzbXV+1MH15XxupvNvpcZCK4j4ZqcqQSUzVSIKp3BheWxvYWTESpcCNMQghW8EkI7QQeZ0UrNtK3Q37XVbz7jnHmEzFfP4DCVqKSrEII7ItyY4qXwFk+3NykXgGHIZFZr5x88MXe8W8nrHKmlAAgHCo3NpZ8RAgmD0FfEDQlAfOeop3EoiO1Mro6kw4SRafp58EGG0RPl0D9UEfyxZn4mPyFjiQ/Oq9D4qFhUc3+ODtuyBctoYCKhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEII3lCqH+BixMRG1gILA9qgzplYcjF4qNkXAPF9wZrPG4o3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/lightningspirit
+
+==================================================================
