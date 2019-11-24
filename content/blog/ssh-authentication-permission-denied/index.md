@@ -1,8 +1,8 @@
 ---
-title:      "Solving SSH Authentication with Permission Denied message"
-subtitle:   "A tale about securing your most secured directories"
-date:  2017-11-09 21:30:00
-author:     "lightningspirit"
+title: "Solving SSH Authentication with Permission Denied message"
+description: "A tale about securing your most secured directories"
+date: 2017-11-09 21:30:00
+author: "lightningspirit"
 image: "./barrier-chain-chain-link-fence-951408.jpg"
 comments: true
 tags: "ssh, bad permissions, chmod, publickey, authentication"
@@ -25,7 +25,7 @@ debug1: Next authentication method: password
 
 Da hell?!
 
-That wasn't useful at all... was my SSH config misconfigured? The client first offered the `publickey` authentication however that was skipped.
+That wasn't useful at all. Was my SSH config misconfigured? The client first offered the `publickey` authentication however, that was skipped.
 
 After sometime looking around I finally understood what the problem was and that was only about **bad permissions in the .ssh directory**.
 
