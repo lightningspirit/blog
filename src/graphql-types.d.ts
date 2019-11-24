@@ -1186,6 +1186,10 @@ export interface MarkdownHeadingFilterListInput {
   elemMatch?: Maybe<MarkdownHeadingFilterInput>
 }
 
+export interface ReadingTime {
+  text: Maybe<Scalars["String"]>
+}
+
 export type MarkdownRemark = Node & {
   id: Scalars["ID"]
   parent?: Maybe<Node>
@@ -1253,6 +1257,7 @@ export interface MarkdownRemarkEdge {
 
 export interface MarkdownRemarkFields {
   slug?: Maybe<Scalars["String"]>
+  readingTime?: Maybe<ReadingTime>
 }
 
 export enum MarkdownRemarkFieldsEnum {

@@ -18,7 +18,7 @@ interface Props extends PageRendererProps {
   data: Query
 }
 
-const Date = styled.p`
+const Metadata = styled.p`
   display: block;
   ${styledScale(-1 / 5)};
   margin-bottom: ${rhythm(1)};
@@ -64,7 +64,9 @@ const BlogPostTemplate = (props: Props) => {
           description={frontmatter.description || excerpt}
         />
         <h1>{post.frontmatter!.title}</h1>
-        <Date>{frontmatter.date}</Date>
+        <Metadata>
+          {frontmatter.date} · {post.fields!.readingTime!.text}
+        </Metadata>
         <div dangerouslySetInnerHTML={{ __html: html }} />
         <Divider />
         {frontmatter.tags && (
@@ -118,6 +120,11 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       html
+      fields {
+        readingTime {
+          text
+        }
+      }
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")

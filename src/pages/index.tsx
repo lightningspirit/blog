@@ -34,6 +34,9 @@ const BlogIndex = (props: Props) => {
             excerpt
             fields {
               slug
+              readingTime {
+                text
+              }
             }
             frontmatter {
               date(formatString: "MMMM DD, YYYY")
@@ -67,7 +70,9 @@ const BlogIndex = (props: Props) => {
             <Title>
               <StyledLink to={slug}>{title}</StyledLink>
             </Title>
-            <small>{frontmatter.date}</small>
+            <small>
+              {frontmatter.date} · {fields.readingTime!.text}
+            </small>
             <p
               dangerouslySetInnerHTML={{
                 __html: frontmatter.description || excerpt,
