@@ -1,6 +1,5 @@
 import { getPosts } from "@/posts";
 
-
 export const baseUrl = 'https://lightningspir.it'
 
 export default async function sitemap() {
