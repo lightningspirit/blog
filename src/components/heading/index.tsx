@@ -1,7 +1,7 @@
 import { type ComponentPropsWithoutRef } from "react";
 
 export function H1(props: ComponentPropsWithoutRef<"h1">) {
-	return <h1 {...props} />;
+	return <h1 className="font-serif" {...props} />;
 }
 
 export function H2(props: ComponentPropsWithoutRef<"h2">) {

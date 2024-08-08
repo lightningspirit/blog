@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { ArrowIcon } from "../icons/arrow-icon";
-import Avatar from './avatar.jpg'
-import Image from "next/image";
+import Avatar from './avatar.jpg';
+import Image from '@moveyourdigital/nextjs-imagerycloud';
 
 export function Header() {
   return (
