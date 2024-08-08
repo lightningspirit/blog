@@ -1,6 +1,6 @@
 import { Pagination } from "@/components/pagination";
 import { Posts } from "@/components/posts";
-import { getPaginatedPosts, getPosts, postsPerPage } from "@/posts";
+import { getPaginatedPosts, getPosts } from "@/posts";
 import { notFound, redirect } from "next/navigation";
 
 export default async function Page({ params }: { params: { page: number } }) {
@@ -13,24 +13,22 @@ export default async function Page({ params }: { params: { page: number } }) {
 
   const { posts, total } = await getPaginatedPosts({
     page,
-    limit: postsPerPage,
+    limit: 12,
   });
 
   if (!posts.length) notFound();
 
   return (
-    <main>
-      <h1>Next.js MDX Blog (Page {page})</h1>
+    <>
       <Posts posts={posts} />
-
-      <Pagination baseUrl="/page" page={page} perPage={postsPerPage} total={total} />
-    </main>
+      <Pagination baseUrl="/page" page={page} perPage={12} total={total} />
+    </>
   );
 }
 
 export async function generateStaticParams() {
   const posts = await getPosts();
-  const pages = Math.ceil(posts.length / postsPerPage);
+  const pages = Math.ceil(posts.length / 12);
 
   return [...Array(pages)].map((_, i) => ({
     page: `${i + 1}`,

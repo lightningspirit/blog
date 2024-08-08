@@ -1,0 +1,164 @@
+export const metadata = {
+  title: "The Agile Initiative Inception",
+  description: "How do you make sure everyone knows where the road leads?",
+  author: "lightningspirit",
+  date: "2019-08-18T21:30:00Z",
+  categories: ["agile", "initiative", "forecast improve", "team management"],
+};
+
+import Image from 'next/image'
+import LeadingImage from './close-up-photo-of-gray-concrete-road-1197095.jpg'
+import AgreementThen from './agreement-then.png'
+import ScopeOutOfScope from './scope-out-of-scope-unresolved.png'
+
+# The Agile Initiative Inception
+
+<figure className="lg:-mx-6">
+<Image
+  src={LeadingImage}
+  sizes="(max-width: 768px) 100w, 768px"
+  alt="Close up of a gray concrete road with a yellow line."
+/>
+</figure>
+
+Do you remember the kick-off day for the initiative you’re currently involved in?
+
+What about those first meetings where everyone was super excited and in agreement?
+
+That general positivity spreading throughout the room, that shiny, new-thing-to-develop feeling. How awesome was that, right?
+
+Now, take a step back and look where you are today.
+Do you still feel the same way?
+
+Yes? No?
+
+**There's a good chance you're not feeling great** — dealing with struggles, deadlines, misunderstandings, and misalignment. Sound familiar?
+
+Well, that happens a lot. I'd even say every time. And there's a reason for that: you, your teammates, your Product Owner, your Engineering Manager, and even all the stakeholders are different people, each with their own perspectives, experiences, and ideas about what to develop.
+
+> You, your teammates, your Product Owner, your Engineering Manager, and even all the stakeholders are different people.
+
+You're not aligned with each other, conceptually.
+
+It's not about you or the Team Lead failing to make things clear. The reason is simple: without proper common ground rules and fundamental processes, this is what happens on big projects.
+
+You're not able to plan a big strategy all at once, and sometimes you can't even predict what you'll deliver by the end of the day—and that's human nature, which is fine! The truth is, it's all about planning and alignment.
+
+> The truth is: it's all about planning and alignment.
+
+The human brain is capable of processing [20 million billion bits of information per second](http://thephenomenalexperience.com/content/how-fast-is-your-brain/) 
+using just [20 Watts](https://www.munichre.com/topics-online/en/digitalisation/interview-henning-beck.html) on average.
+That's astonishingly fast! But that only works for simple, everyday activities.
+
+**So, is there anything we can do to improve planing?**
+**Wouldn't it be great to have a better grasp of what's really going on when developing a new feature?**
+
+I believe so, and I think *Agile* practices, especially the *Scrum* methodology, can be a powerful tool to help with that.
+
+But wait, isn't *Agile* about small deliverables and steady progress without worrying too much about the big picture? In part, yes, but it's also about **great communication**, **better understanding**, **forecasting**, and **collaboration**.
+
+## Welcome to the *Agile Initiative Inception*
+
+The sole purpose of running an *Agile Initiative Inception* session is to ensure that everyone is aligned and understands the initiative. That's it: nothing more, nothing less!
+
+> Everyone is aligned and understands the initiative
+
+## Shift your mindset
+
+To successfully run an *Agile Initiative Inception*, you first need to change how you, your team, and everyone involved think about the importance of finding common ground.
+
+The following image is a great way to represent what we're aiming for:
+
+<Image src={AgreementThen} />
+
+*Picture borrowed from [Agile Warrior](https://agilewarrior.wordpress.com/2010/11/06/the-agile-inception-deck/)*
+
+One way to achieve this is to involve all participants from the very beginning, even before the session, and to clearly define your problem first.
+
+If you don't know each other well, grab a coffee together, share your ideas, and ask for their feedback.
+
+## Start from the beginning
+
+Sit everyone together, **define a social contract** regarding equipment you can use and
+how to leave the room without interruption, breaks, etc.
+
+Start by presenting an **Agenda** and outlining the **expectations for the session**.
+Here's an example:
+
+- Understand the initiative **motivations**
+- Find your **common ground** and align on the goals
+- Raise **questions**, clear up doubts, and close any unresolved issues
+- Assess **risks**, impediments and dependencies
+- Discover the **direction**: what's in scope and what's out of scope
+- Determine the **next steps** and create action points
+
+
+## Start with a “Why?”
+
+### Duration: 10 minutes
+
+The goal here is to define a vision for the project, which means you can **boil it down to a single sentence**.
+
+Everyone involved needs to understand who the stakeholders are and the reason behind the initiative.
+
+## Scope, out of scope, unresolved
+
+### Duration: 30-90 minutes
+
+Once the **vision** is clear, move on to the next step: writing down what's in scope and what's not on a big whiteboard or using post-its.
+
+After this step, you'll have a clearer idea of what you want to tackle and what's out of scope.
+
+<Image src={ScopeOutOfScope} />
+
+After running this step, you'll come with some barriers about what you want to tackle 
+and what is out of the scope.
+
+## Meet your neighbors
+
+### Duration: 30-60 minutes
+
+Now it's time to **identify dependencies** or points of contact. For each item/topic in scope, determine which **teams need to be involved** and what external dependencies need to be resolved.
+
+Remember, this is just a high-level overview. The details for each item/topic should be aligned in separate sessions, like a *User Story Mapping*.
+
+## Show your solution
+
+### Duration: 60-90 minutes
+
+Using the big whiteboard, rearrange your scope and draw your boxes together with the team, adding some technical details (but nothing too elaborate).
+
+Divide the team into **small task groups** and sketch out architectural diagrams, considering:
+
+- **Existing ecosystem** components that might be affected
+- Describe what needs to change
+- Understand the **implications** of those changes
+- Drive the discussion to a clear outcome
+
+Optionally, you can present each part of the architectural diagram and ensure everyone understands what role each component plays in the existing ecosystem.
+
+## What keeps us up at night?
+
+### Duration: 30-60 minutes
+
+One thing we often forget is to assess the risks we might face in the short and long term throughout the initiative's lifecycle — from development to general availability.
+
+Start by mapping the **risks** and discussing each one to determine if they're **worth tackling or not** — be conservative here. Limit each topic to about 10 minutes of discussion.
+
+Lastly, revisit the *Unresolved* ideas and discuss them just like you did with the ones in *scope*.
+
+If you can't reach an agreement, place that item in a *Parking Lot* for further discussion in a different forum and move on to the next topic.
+
+## User Story Mapping
+
+Now, with all the groundwork laid, you're ready to run one or more *[User Story Mapping](https://app.mindsettlers.com/guide/6y2yApgsr6gy2MY0mSQ8U6)* sessions. The product scope is clear, and everyone is ready to dive deep into the user journeys.
+
+## Conclusions
+
+The methodology described here is a high-level framework to involve everyone during the product design phase. Whenever you feel the need to find common ground, this is the approach to take.
+
+I believe this tool can help teams define the vision, scope, and requirements of an initiative for the next steps and resolve some of the inconsistencies and miscommunication that often arise during development.
+
+If you find this useful or have already used this in your team, please leave a comment below. Share your feedback so others can benefit from it!
+
+*Featured image by [Max Andrey](https://www.pexels.com/@maxandrey?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)*

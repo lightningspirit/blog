@@ -12,7 +12,7 @@ export function Pagination({
   total: number;
 }) {
   return (
-    <div>
+    <div className="font-serif">
       {page !== 1 && (
         <>
           <Link href={`${baseUrl}/${page - 1}`} rel="prev">

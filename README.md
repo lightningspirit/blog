@@ -1,21 +1,19 @@
-# next-mdx-blog-example
+# lightningspirit's blog
 
-This is an example project that demonstrates how a blog built with [Next.js](https://nextjs.org/) (App Router) and [MDX](https://www.mdxjs.com/) might work.
-
-Read the full walkthrough at https://www.alexchantastic.com/building-a-blog-with-next-and-mdx
+This is the base for my own personal blog.
 
 ## Setup
 
 Clone the repository:
 
 ```sh
-git clone git@github.com:alexchantastic/next-mdx-blog-example.git
+git clone git@github.com:lightningspirit/blog.git
 ```
 
 Change directories into the project and install dependencies:
 
 ```sh
-cd next-mdx-blog-example
+cd blog
 npm install
 ```
 
@@ -35,10 +33,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser.
 src/
 ├── app/
 │   ├── (posts)/
-│   ├── category/
-│   │   ├── [category]/
-│   │   └── page/
-│   │       └── [page]/
 │   └── page/
 │       └── [page]/
 └── components/

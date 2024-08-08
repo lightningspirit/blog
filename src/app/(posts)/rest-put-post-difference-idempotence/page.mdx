@@ -1,0 +1,121 @@
+export const metadata = {
+  title: "Rest PUT vs POST actions by example",
+  description: "The only significant difference between PUT and POST",
+  author: "lightningspirit",
+  date: "2018-12-18T19:15:00Z",
+  categories: ["rest", "put vs post", "idempotent", "http"],
+};
+
+import Image from 'next/image'
+import LeadingImage from './photo-of-person-s-open-hands-2258248.jpg'
+
+# Rest PUT vs POST actions by example
+
+<figure className="lg:-mx-6">
+<Image
+  src={LeadingImage}
+  sizes="(max-width: 768px) 100w, 768px"
+  alt="Open hands of a man facing himself."
+/>
+</figure>
+
+As a technical interviewer at Talkdesk, I've had the chance to meet a lot of interesting people over the past two years. Most were very technical, others less so, but all of them seemed professional and talented &mdash; it's fantastic to work in an industry where you encounter so many fascinating people!
+
+One interesting thing I've noticed is when we ask candidates, *What's the main difference between POST and PUT verbs?* 99% of the answers are along the lines of *POST is for creating things, PUT for updating*.
+
+### What are the origins of this idea?
+
+According to the HTTP/1.1 Spec:
+
+> The POST method is used to request that the origin server accept the entity enclosed in the request as a new subordinate of the resource identified by the Request-URI in the Request-Line.
+
+In other words, that means the client is telling to **create** a new representation of the identified resource.
+
+> The PUT method requests that the enclosed entity be stored under the supplied Request-URI. If the Request-URI refers to an already existing resource, the enclosed entity SHOULD be considered as a modified version of the one residing on the origin server.
+
+In this case, when I want to **update** an identity, I should use this verb.
+
+Cool, so we reached to the traditional idea of **creating** versus **updating**.
+
+
+### Some examples to exercise
+
+Let's imagine there's a `people` resource. We're going to perform some operations.
+
+1. Let's create one person:
+```json
+> POST /people
+{
+  "name": "Vitor Carvalho",
+  "currency": "EUR"
+}
+```
+```json
+< Location: /people/1
+{
+  "id": "1",
+  "name": "Vitor Carvalho",
+  "currency": "EUR",
+  "credit": "0.00"
+}
+```
+Great! A person was created.
+
+2. Let's update it's content:
+```json
+> PUT /people/1
+{
+  "name": "Vitor de Carvalho",
+  "currency": "USD",
+  "credit": "10.00"
+}
+```
+```json
+< Location: /people/1
+{
+  "id": "1",
+  "name": "Vitor de  Carvalho",
+  "currency": "USD",
+  "credit": "10.00"
+}
+```
+
+3. Let's give this person some more credit:
+```json
+> POST /people/1/credit
+{
+  "amount": "2.00"
+}
+```
+
+In the last example, POST was used to add credit.
+Since the `credit` property already exists, **why not use PUT instead?**
+
+### Enters Idempotence
+
+[Idempotence](https://en.wikipedia.org/wiki/Idempotence) ensures that even if an action is performed multiple times with the same input, the result remains unchanged. In simpler terms, repeating the action doesn't cause additional effects.
+
+According to section 9.1.2 of [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html):
+
+> Methods can also have the property of "idempotence" in that (aside from error or expiration issues) the side-effects of N > 0 identical requests is the same as for a single request. The methods GET, HEAD, PUT and DELETE share this property.
+
+This means **PUT** should always be idempotent. However, adding credit with an amount isn't idempotent; it always adds to the current value (handled atomically on the backend), which violates the idempotence principle of **PUT**.
+
+### Conclusions
+
+**PUT** is inherently **idempotent**, highlighting the main difference between POST and PUT and explaining why POST is used for creating a new representation.
+
+### TL;DR
+
+- For actions without needing idempotence, use **POST**
+- For actions requiring idempotence, prefer **PUT** (or **POST** when **PUT** is not feasible)
+
+#### Examples:
+- Creating a new instance of a resource `POST /people`
+- Perform actions to existing resources `POST /people/1/credits`
+- Updating a representation `PUT /people/1`, `PUT /people/1/avatar`
+- Perform idempotent actions `PUT /settings` or `POST /settings`
+
+Following this convention helps API designers signal whether an operation supports idempotence, which can prevent headaches in production.
+
+*Featured image by [Luis Quintero](https://www.pexels.com/@jibarofoto?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)*

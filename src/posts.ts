@@ -1,14 +1,12 @@
 import { readdir } from "fs/promises";
-import { type Category } from "./categories";
 
 export interface Post {
   slug: string;
   title: string;
-  publishDate: string;
-  categories: Category[];
+  date: string;
+  description: string;
+  categories: string[];
 }
-
-export const postsPerPage = 3 as const;
 
 export async function getPosts(): Promise<Post[]> {
   // Retreive slugs from post routes
@@ -25,7 +23,7 @@ export async function getPosts(): Promise<Post[]> {
   );
 
   // Sort posts from newest to oldest
-  posts.sort((a, b) => +new Date(b.publishDate) - +new Date(a.publishDate));
+  posts.sort((a, b) => +new Date(b.date) - +new Date(a.date));
 
   return posts;
 }
@@ -33,7 +31,7 @@ export async function getPosts(): Promise<Post[]> {
 export async function getPostsByCategory({
   category,
 }: {
-  category: Category;
+  category: string;
 }): Promise<Post[]> {
   const allPosts = await getPosts();
 
@@ -70,7 +68,7 @@ export async function getPaginatedPostsByCategory({
 }: {
   page: number;
   limit: number;
-  category: Category;
+  category: string;
 }): Promise<{ posts: Post[]; total: number }> {
   const allCategoryPosts = await getPostsByCategory({ category });
 

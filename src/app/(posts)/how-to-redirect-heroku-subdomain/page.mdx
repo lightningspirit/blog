@@ -1,0 +1,103 @@
+export const metadata = {
+  title: "How to redirect a Heroku subdomain",
+  description: "Introducing the Permanent Redirect Server written in Node.js.",
+  author: "lightningspirit",
+  date: "2019-07-03T23:44:00Z",
+  image: "./road-street-sign-way-536.jpg",
+  categories: ["heroku", "redirect", "node.js", "http", "migration", "zero-downtime deployment"],
+};
+
+import Image from 'next/image'
+import LeadingImage from './road-street-sign-way-536.jpg'
+
+# How to redirect a Heroku subdomain
+
+<figure className="lg:-mx-6">
+<Image
+  src={LeadingImage}
+  sizes="(max-width: 768px) 100w, 768px"
+  alt="Road street sign way."
+/>
+</figure>
+
+This article covers how to redirect all requests from `my-app.herokuapp.com`
+to another address, like `my-app.github.io` or `my-app.com`.
+
+The same approach can be used in other situations where you need a permanent redirect to maintain consistency with previous URLs.
+
+We faced this challenge when planning to migrate some apps from Heroku to our own Kubernetes instance.
+
+These apps also had a custom domain configured, so we needed to redirect all incoming requests to the new domain pointing to our Kubernetes cluster.
+
+To do this, I created a small Node.js app that responds to every request with an `HTTP/1.1 301 Moved Permanently` status, keeping the path structure intact.
+
+We monitored the Heroku instance for a few months and saw a gradual decrease in requests over the first few days, eventually reaching zero in the last 30 days. After that, we shut it down and completed the migration.
+
+## How to use?
+
+**It's all done in four simple steps.**
+
+The source code is available in [this Github repository](https://github.com/lightningspirit/permanent-redirect-server)
+and you can use it for your own purposes.
+
+The codebase is a simple Node.js app that creates an HTTP server and handles a raw HTTP response using the native  `http.createServer` method.
+
+It also includes a `Procfile`, which will be activated as soon as it’s deployed to Heroku.
+
+### Steps
+#### 1. Clone the repository
+
+First, clone the repository and configure the Heroku git remote to push:
+```bash
+$ git clone https://github.com/lightningspirit/permanent-redirect-server.git
+```
+```bash
+$ git remote add heroku https://git.heroku.com/my-app.git
+```
+
+#### 2. Run the tests
+
+Make sure you'll run the automated tests before using this for real.
+```bash
+$ npm test
+```
+
+If anything went wrong in this part, you should not proceed but [file an issue](https://github.com/lightningspirit/permanent-redirect-server/issues) in the repository.
+
+#### 3. Configure the address to redirect
+
+Now, you need to tell the script where to redirect all new requests by adding
+a new environmental variable to the container:
+
+```bash
+$ heroku config:set NEW_BASE_URL=https://my-app.com -a my-app
+Setting NEW_BASE_URL and restarting ⬢ my-app... done, vX
+NEW_BASE_URL: https://my-app.com
+```
+
+All set! Now we just need to deploy it.
+
+#### 4. Zero-downtime deployment
+
+Heroku's deployment strategy aims to minimize downtime when uploading a new version. **The existing containers are only removed once the new one is ready and all current requests are completed.**
+
+There's even a pre-boot option for apps that need to warm up their content, but for this case, you can ignore it.
+
+Before taking this step, make sure **the new instance is properly working and can handle the traffic shift** from Heroku.
+
+So, let's deploy it:
+```bash
+$ git push heroku master
+```
+
+Wait for the build process to finish, and test it:
+
+```bash
+$ curl http://my-app.herokuapp.com/foo/bar?param=value -v
+< HTTP/1.1 301 Moved Permanently
+< Location: http://my-app.com/foo/bar?param=value
+```
+
+And that's it! From now on, all requests will be redirected to the new instance.
+
+*Featured image by [Gratisography](https://www.pexels.com/@gratisography?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)*

@@ -1,0 +1,49 @@
+export const metadata = {
+  title: "Solving SSH Authentication with Permission Denied message",
+  description: "A tale about securing your most secured directories",
+  author: "lightningspirit",
+  date: "2017-11-09T21:30:00Z",
+  categories: ["ssh", "bad permissions", "chmod", "publickey", "authentication"],
+};
+
+import Image from 'next/image'
+import LeadingImage from './barrier-chain-chain-link-fence-951408.jpg'
+
+# Rest PUT vs POST actions by example
+
+<figure className="lg:-mx-6">
+<Image
+  src={LeadingImage}
+  sizes="(max-width: 768px) 100w, 768px"
+  alt="Barrier link fence."
+/>
+</figure>
+
+So, I just tried setting up login via public key on a new server and ran into the following error:
+
+```bash
+debug1: SSH2_MSG_NEWKEYS sent
+debug1: expecting SSH2_MSG_NEWKEYS
+debug1: SSH2_MSG_NEWKEYS received
+debug1: SSH2_MSG_SERVICE_REQUEST sent
+debug1: SSH2_MSG_SERVICE_ACCEPT received
+debug1: Authentications that can continue: publickey,gssapi-keyex,gssapi-with-mic,password
+debug1: Next authentication method: publickey
+debug1: Offering RSA public key: /Users/lightningspirit/.ssh/id_rsa
+debug1: Authentications that can continue: publickey,gssapi-keyex,gssapi-with-mic,password
+debug1: Next authentication method: password
+```
+
+What the hell?!
+
+That wasn't helpful at all. Was my SSH config messed up? The client first tried public key authentication, but it was skipped.
+
+After some time digging around, I finally figured out the issue: **bad permissions in the .ssh directory**.
+
+Turns out, SSH doesn't like it when your home directory `~/` or `~/.ssh` directory have group write permissions. And honestly, that makes total sense to me as your home directory should only be writable by you, right?
+
+So, I ran `chmod 700 ~/.ssh` and `chmod 600 ~/.ssh/authorized_keys`  to fix the permissions.
+
+There are other ways to solve this _issue_, such as disabling this *strict mode* (which I definitely wouldn't recommend at all).
+
+*Featured image by [Travis Saylor](https://www.pexels.com/@travis-saylor-271738?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)*
