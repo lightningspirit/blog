@@ -1,0 +1,42 @@
+export const metadata = {
+  title: "Never nesting",
+  description: "The Case for Avoiding Nesting and Using Small Functions",
+  author: "lightningspirit",
+  date: "2021-04-13T11:43:00Z",
+  categories: ["programming", "clean code"],
+};
+
+# Never nesting
+
+I watched this YouTube video and this gave me the idea to write this blog post entry.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CFRhGnuXG-4?si=Vtov1-1z7jY1lTmA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+In software development, clean and maintainable code is not an option; it's a requirement. It makes a program easier to understand, modify, and debug. Some of the basic principles of clean code according to some advocates like Uncle Bob (Robert C. Martin) include avoiding or minimizing nesting, using small and focused functions.
+
+## Avoiding Nesting: Enhancing Code Readability
+
+Nesting—placing one type of structure within another is one of the most basic structures of code in programming. While sometimes it cannot be avoided, excessive nesting massively impedes readability and surges the risks of bugs. The deeper the logic goes into nestedness, the harder it becomes for a developer to understand the execution flow of the program, especially when one comes back to the code after some time.
+
+The less the nesting, the more linear the code is, and the easier it becomes to follow. One level of nesting depth raises complexity and thus cognitive load in reasoning about the behavior of the code; therefore, restructuring nested code into smaller, self-contained functions can produce code that is easier to read and maintain.
+
+## Small Functions: Modularization and Reusability
+
+Uncle Bob is insistent on small functions that do one thing and do it well, following the KISS principle. Small functions support modularity in that they encapsulate some specific behavior or operation. Ideally, every function should have a single task—compute a value, format data, or deal with some aspect of the business logic. Also, in the realm of functional programming, pure functions can decrease in thousands the possibility of bugs to occur due to racing conditions or accessing global state.
+
+### Benefits of using small functions:
+
+- **Readability**: Easy to read text where one comes across shorter function names explaining their purpose at a glance.
+- **Testability**: The smaller a function is, the easier it will be to test in isolation; this is unit testing, so each function behaves as expected.
+- **Reusability**: When functions are designed to perform certain tasks, they can be used at different instances in a codebase, reducing redundancy and promoting DRY principles.
+
+One of the famous evangelists of writing clean code is Robert C. Martin, better known as Uncle Bob. He lays down strong principles of clarity, simplicity, and standard processes in order to improve collaboration and maintainability.
+
+Following such principles, minimizing indentation and using small, single-minded functions, we end up with a much cleaner and more resilient code base. Clean code gives less chance of introducing bugs in it; it is easier to debug and thus helps increase the productivity and efficiency of software development teams.
+
+As Uncle Bob puts it so succinctly:
+> Clean code always looks like it was written by someone who cares.
+
+Let's care about the code and make sure that in each line we write:
+- its purpose is clear for anyone looking for the first time
+- it's easy to maintain allowing refactoring code in a bug free way.

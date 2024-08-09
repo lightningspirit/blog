@@ -1,0 +1,32 @@
+export const metadata = {
+  title: "Lost SSH session during upgrade",
+  description: "",
+  author: "lightningspirit",
+  date: "2021-09-30T23:12:00Z",
+  categories: ["linux", "sysadmin"],
+};
+
+# Lost SSH session during upgrade
+
+I was in the middle of an upgrade when someone accidentally closed my terminal. When I tried to restart the `apt upgrade` process, I encountered an error message about a lock file being held.
+
+This was on a machine running production applications, so I needed to resolve the issue quickly and minimize the risk of causing any downtime or further issues. After some research, I found a straightforward and effective solution.
+
+## The Problem: Locked apt Process
+
+When `apt` is running, it creates a lock file to prevent other package management processes from interfering. If the process is interrupted unexpectedly &mdash; like when my terminal was abruptly closed &mdash; this lock file might not be removed properly. As a result, any subsequent attempts to run apt will fail with a message like:
+```
+E: Could not get lock /var/lib/dpkg/lock-frontend.
+```
+
+## The Solution: Safely Removing the Lock
+
+To resolve this issue, I could follow these steps and successfully complete the upgrade:
+
+```bash
+sudo killall apt # to release the lock
+sudo dpkg --configure -a # to fix the interrupted upgrade
+sudo apt upgrade # to make sure no packages are left not upgraded
+```
+
+As you can imagine, this was nerve-wracking, but having a solid plan in place made all the difference. Additionally, knowing we had backups gave us peace of mind &mdash; if the problem persisted, we could at least roll back to a recent backup.

@@ -1,0 +1,116 @@
+export const metadata = {
+  title: "A Tale about undefined",
+  description: "Null vs undefined and why using undefined as default.",
+  author: "lightningspirit",
+  date: "2020-01-20T20:24:00Z",
+  categories: ["null vs undefined", "javascript"],
+};
+
+# A Tale about `undefined`
+
+As you might know, `JavaScript` has two entities that represent the absence of a value: `null`, which is common across many programming languages, and the more mysterious `undefined`.
+
+Before we dive into the nuances of `undefined`, let's take a quick look at the story behind `null` and how it became both a staple and a source of frustration in the programming world.
+
+[Tony Hoare](https://news.ycombinator.com/item?id=12427069) is credited with introducing `null` as a concept while working on the ALGOL programming language. It was designed to be a reference to a non-existent value, which was useful in algorithm development. The idea quickly spread to other languages like C, C++, and Java. But what seemed like a helpful tool turned into a debugging nightmare with the rise of `null` pointer exceptions.
+
+## What is `NULL`?
+
+`Null` is essentially a pointer to a specific memory address that signifies the absence of any value. When used carefully, it can be useful as a way to handle unknown or unimportant branches in conditional logic. However, as codebases grow in complexity, so does the challenge of tracking down `null` references, inevitably leading to `null` pointer errors.
+
+## So, what about `undefined`?
+
+To address some of the problems caused by `null`, the creators of `JavaScript` introduced the `undefined` type. While `null` is used across many languages, `undefined` is unique to `JavaScript`. Though their implementations are similar, `undefined` is treated as a special kind of `null`, designed to handle scenarios where `null` falls short.
+
+## What's the difference?
+
+While `null` explicitly represents the absence of a value (you assign null to a variable), `undefined` signifies that a value hasn't been assigned yet, or the variable itself doesn't exist. In practical terms, they both represent a lack of value, but they do so in different contexts.
+
+## Dig into the details
+
+There are some intriguing consequences of how `undefined` is implemented in `JavaScript`:
+
+### 1. Automatic Assignment to `undefined`
+
+If a variable is declared but not initialized, it is automatically assigned the value `undefined`.
+```js
+const x;
+console.log(x); // undefined
+```
+
+### 2. Absence Equals to same Absence
+
+Check out the following examples, the first in `JavaScript`:
+```js
+undefined === undefined // true
+null === null           // true
+null === undefined      // false
+```
+The second in C, comparing two `NULL` variables always returns true:
+```c
+#include <stdio.h>
+int main()
+{
+  char* v = NULL;
+  char* x = NULL;
+
+  if (v == x)
+    printf("We are equal"); // outputs this!
+  
+  return 0;
+}
+```
+In `JavaScript`, however, `undefined` and null are distinct types of absence.
+
+### 3. Null is an object
+
+One of `JavaScript`'s quirks is that null is treated as an object, which has led to many bugs. This design flaw is likely a major reason why `undefined` was introduced:
+```js
+typeof null // object
+typeof undefined // undefined
+```
+
+### 4. Parameters in functions
+
+When a parameter is omitted in a function, its value is automatically assigned as `undefined`:
+```js
+function foo(a) { console.log(a) }
+foo() // undefined
+```
+
+## How to check for `null` or `undefined`
+
+There are several ways to check if variables are `null` or `undefined`. For `null`, you can simply compare it to `null`:
+
+```js
+y === null // Uncaught ReferenceError: y is not defined
+const x = null
+typeof x === 'object' && x === null // true
+typeof y === 'object' && y === null // false
+```
+
+In the example above, we successfully check that `x` is `null` but fail to check for an `undefined` variable. Here's how you can check for `undefined`:
+
+```js
+console.log(y === undefined); // ReferenceError: y is not defined
+typeof y === 'undefined' // true
+```
+While `undefined` behaves similarly to `null` when checking an undeclared variable, it provides the correct type.
+
+To check for both `null` and `undefined`, you can use:
+```js
+typeof y === 'undefined' || y === null // true
+
+const x = null
+typeof x === 'undefined' && x === null // true
+```
+
+This is how I implemented in the [isempty](https://github.com/lightningspirit/isempty) npm package that checks for the empty magnitude of any variable, including `null` and `undefined`. Check it out if you're interested!
+
+## Conclusion
+
+When working in JavaScript, it's often best to avoid using `null` and instead rely on `undefined` in most cases. `Undefined` is a natural part of the JavaScript language, seamlessly representing uninitialized variables and missing values. On the other hand, `null` is a carryover from other languages and can introduce unnecessary complexity, especially when dealing with conditional logic and debugging.
+
+By favoring `undefined`, you align with JavaScript's inherent design and reduce the risk of errors like `null` pointer exceptions. It simplifies code, making it clearer when a value is genuinely unassigned versus intentionally absent. While there may be specific cases where `null` is appropriate—such as when you need to explicitly signal an "empty" state—leaning on `undefined` in most situations helps maintain clean and consistent code.
+
+In short, embrace `undefined` as your default choice, and use `null` sparingly and with purpose. This approach will lead to fewer headaches and a more intuitive coding experience.
