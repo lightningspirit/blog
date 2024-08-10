@@ -52,7 +52,7 @@ I don't want to enter in many details regarding each one of them, but if you're 
 
 These algebraic structures are the foundation of most of the functions that are defined in the library.
 
-### identity :: x -> x
+### `identity :: x -> x`
 
 The `identity` function is a simple utility that takes a single argument and returns it without any modification. This function is often used as a placeholder or default function when a value needs to be returned unchanged.
 
@@ -64,7 +64,7 @@ const object = { key: 'value' };
 const sameObject = identity(object); // sameObject is { key: 'value' }
 ```
 
-### defined :: x -> boolean
+### `defined :: x -> boolean`
 
 The `defined` function takes a single argument and returns `true` if the argument is not `undefined`. It is useful for checking the presence of a value before performing operations on it, to avoid errors caused by undefined values.
 
@@ -78,7 +78,7 @@ const result5 = defined([]); // result5 is true
 const result6 = defined({}); // result6 is true
 ```
 
-### declared :: this -> x -> boolean
+### `declared :: this -> x -> boolean`
 
 This function evaluates the `this` context where it is called. If the `this` context is the `declared` function itself, it defaults to using the global context (`globalThis`). Otherwise, it checks if the specified property (`x`) is defined on the provided context.
 
@@ -100,7 +100,7 @@ console.log(declared('foo'));  // This is the same as calling declared.call(glob
 console.log(declared.apply(globalThis, ['foo']));  // As above, this will return false if 'foo' is not a global property.
 ```
 
-### is :: t -> x -> boolean
+### `is :: t -> x -> boolean`
 
 Determines if a value matches a specified type, is an instance of a constructor, strictly equal to any other value or holds the same reference to an object. The function is curried, allowing partial application of arguments. It checks if the value matches the type or is an instance of the constructor function or class. The supported types include BigInt, Boolean, Function, Number, Object, Symbol, String, Functor (a.k.a has a 'map' method), Array, undefined, and null. For other types, it uses the `instanceof` operator.
 
@@ -123,7 +123,7 @@ isString('hello'); // true
 isString(123); // false
 ```
 
-### compose :: (...fn) -> fn
+### `compose :: (...fn) -> fn`
 
 This function is a serious one, it takes a series of functions and returns a new function that, when called, applies the functions from right to left in sequence to a given argument.
 
@@ -142,7 +142,7 @@ const composed = compose(toUpperCase, stringify, increment);
 const finalResult = composed(5); // Result is 'VALUE: 6'
 ```
 
-### curry :: ((a, b, ...) -> c) -> a -> b -> ... -> c
+### `curry :: ((a, b, ...) -> c) -> a -> b -> ... -> c`
 
 A curried function allows you to call a function with a partial set of arguments, and it will return a new function that takes the remaining arguments. This process continues until all arguments have been provided, at which point the original function is invoked with all the arguments.
 
@@ -159,7 +159,7 @@ const add5And10 = add5(10);
 const result = add5And10(15); // result is 30
 ```
 
-### map :: fn -> x -> Functor | Promise
+### `map :: fn -> x -> Functor | Promise`
 
 Applies a function to each element in a functor, returning a new functor with the results. This function is curried, meaning it can be partially applied. It takes a function `fn` that transforms elements of the functor `x`, and returns a new functor with the transformed elements.
 
@@ -177,7 +177,7 @@ const doubledPromise = map(double, promise);
 doubledPromise.then(console.log); // Output: 10
 ```
 
-### match :: Matchers -> x -> U
+### `match :: Matchers -> x -> U`
 
 Creates a matcher function that executes a handler based on the type or value of the input.
 
@@ -196,7 +196,7 @@ console.log(m(42)); // Output: '42Number'
 console.log(m({})); // Output: 'default' (matches default case)
 ```
 
-### tryCatch :: fn -> fn -> U
+### `tryCatch :: fn -> fn -> U`
 
 A higher-order function that wraps a function with try-catch block for error handling.
 
@@ -223,7 +223,7 @@ console.log(safeDivide(10, 2)); // 5
 console.log(safeDivide(10, 0)); // Error dividing 10 by 0: Division by zero, 0
 ```
 
-### memoize :: fn -> T -> T
+### `memoize :: fn -> T -> T`
 
 Memoizes a function to cache its results based on the provided arguments. This higher-order function returns a new function that remembers the results of previous calls with the same arguments, avoiding redundant computations and improving performance for functions with expensive calculations.
 

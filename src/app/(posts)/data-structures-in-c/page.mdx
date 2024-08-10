@@ -1,0 +1,261 @@
+export const metadata = {
+  title: "Data Structures in C",
+  description: "A simple implmentation of data structures in C",
+  author: "lightningspirit",
+  date: "2023-08-20T20:32:00Z",
+  categories: ["data structures", "c"],
+};
+
+# Data Structures in C
+
+While looking for something else to do, I realized how much I missed writing C code. I really enjoy how the C language allows me, as a programmer, to communicate almost directly with the machine, specifying exactly what and how to execute tasks.
+
+In C, structures are fairly easy to understand, and you can use the built-in primitives provided by the language. However, when dealing with larger structures, libraries, or applications, or when it's impractical to know the dimensions of your dataset at compile time, using `malloc` and similar functions becomes an invaluable tool. The challenge here is that with this flexibility comes the responsibility of carefully managing memory allocation yourself. Do I really need to reinvent the wheel every time I require a dynamically allocated list with attached operations, or when I need a simple queue?
+
+Enters my new [repository of C data structures](https://github.com/lightningspirit/c-data-structures)!
+
+### What is included
+
+I've compiled some of the C code I've written and created a library that includes three data structures I believe are essential for most applications:
+
+- **Vector** `vector_t` also known as a list, which can also be used as a tuple.
+- **Matrix** `matrix_t` a set of operations that manipulates a 1D vector, virtually transforming it into a matrix.
+- **Linked List** `node_t` a simple linked list structure where the list is a pointer to the head and tail nodes.
+
+#### Vector operations
+```c
+vector_t *vector_t_create(const size_t);
+```
+```c
+void vector_t_destroy(vector_t *);
+```
+```c
+// Retrieves the size (capacity) of `vector_t`
+size_t vector_t_size(const vector_t *);
+```
+```c
+// Grows or shrinks a `vector_t`
+void vector_t_resize(vector_t *, const size_t);
+```
+```c
+// Compacts a sparsed vector keeping
+// intact the order of members.
+size_t vector_t_compact(vector_t *);
+```
+```c
+// Inserts an element at given `size_t` in the `vector_t`
+// Does not replace any value, only places `item` in the 
+// position `index`, moving right all subsequent non-null 
+// items, unless position holds a `NULL` pointer.
+void vector_t_insert(vector_t *, const size_t, void *);
+```
+```c
+// Updates or inserts an element at given `size_t` within
+// the `vector_t`
+void vector_t_set(vector_t *, const size_t, void *);
+```
+```c
+void *vector_t_get(const vector_t *, const size_t);
+```
+```c
+// Removes `count` elements from `start` position
+void vector_t_remove(vector_t *, size_t, const size_t);
+```
+```c
+// Inserts member right after the last non-null
+// position of `vector_t`
+void vector_t_push(vector_t *, void *);
+```
+```c
+// Move a member to a new index, overriding any
+// value in `destination`
+void vector_t_move(vector_t *, const size_t, const size_t);
+```
+```c
+// Swaps poistions of any two members
+void vector_t_swap(vector_t *, const size_t, const size_t);
+```
+```c
+// Copy the provided `vector_t` keeping members with same pointer
+vector_t *vector_t_copy(const vector_t *);
+```
+```c
+// Reverse the provided `vector_t`
+void vector_t_reverse(vector_t *);
+```
+
+#### Matrix operations
+```c
+matrix_t *matrix_t_create(const size_t rows, const size_t cols);
+```
+```c
+void matrix_t_destroy(matrix_t *);
+```
+```c
+void matrix_t_set(matrix_t *matrix, const size_t row, const size_t col, void *item);
+```
+```c
+void *matrix_t_get(matrix_t *matrix, const size_t row, const size_t col);
+```
+
+### Examples
+
+#### Vector
+```c
+#include "vector.h"
+
+int main() {
+  // create vector with size = 3
+  vector_t *v = vector_t_create(3);
+
+  int i = 42;
+  vector_t_set(v, 0, &i);
+
+  // it's the same pointer
+  (*(int *)vector_t_get(v, 0)) == i
+
+  int j = 101;
+  // insert j in 3rd position
+  vector_t_insert(v, 2, &j);
+  // remove two positions, starting in index 1, positions are set to `NULL`
+  // does not actually resize the vector
+  vector_t_remove(v, 1, 2);
+
+  // do not forget to free memory
+  vector_t_destroy(v);
+
+  return 0;
+}
+```
+#### Matrix
+```c
+#include "matrix.h"
+
+int main() {
+  // matrix of 2 x 3
+  matrix_t *m = matrix_t_create(2, 3);
+
+  matrix_t_cols(m) == 3;
+  matrix_t_rows(m) == 2;
+
+  int i = 42;
+  matrix_t_set(m, 0, 0, &i);
+
+  matrix_t_destroy(m);
+
+  return 0;
+}
+```
+#### Node (Linked List)
+```c
+#include "node.h"
+
+int main() {
+  int s[4] = {1, 37, 42, 101};
+
+  // head(42) -> NULL
+  node_t *head = node_t_create(&s[2], NULL);
+  node_t *tail = NULL;
+
+  // head(37) -> next(42) -> NULL
+  node_t_unshift(&s[1], &head);
+  
+  // head(1) -> next(37) -> next(42) -> NULL
+  node_t_unshift(&s[0], &head);
+
+  // head(1) -> next(37) -> next(42) -> next(101) -> NULL
+  tail = node_t_push(&s[3], &head);
+
+  // head(1)
+  node_t_peek(head);
+
+  // tail(101)
+  node_t_peek(tail);
+
+  // i = 1
+  // head(37) -> next(42) -> next(101) -> NULL
+  int i = *(int *)node_t_shift(&head);
+
+  // head(37)
+  node_t_peek(head);
+
+  // do not forget to free memory
+  node_t_destroy(head);
+
+  return 0;
+}
+```
+
+### Building a Queue or Stack with a Linked List
+
+You can leverage the `node_t` structure to build an efficient queue or stack by maintaining a reference to the head of the stack, or in the case of a queue, both the head and tail. The operations on `node_t` simplify the implementation of these structures.
+
+#### Thread-Safe Queue System
+Creating a simple thread-safe queue system can be beneficial for many queuing operations. This can be accomplished using the POSIX `pthreads` module.
+
+```c
+// queue.c
+#include <pthread.h>
+#include "node.h"
+
+typedef struct queue_t
+{
+  node_t *head;
+  node_t *tail;
+  size_t size;
+  pthread_mutex_t lock;
+} queue_t;
+
+queue_t *queue_t_create()
+{
+  queue_t *q = malloc_realloc(sizeof(*q), NULL);
+  q->size = 0;
+  pthread_mutex_init(&q->lock, NULL);
+  return q;
+}
+
+void queue_t_append(queue_t *q, void *v)
+{
+  pthread_mutex_lock(&q->lock);
+  q->tail = node_t_push(v, q->head == NULL ? &q->head : &q->tail);
+  q->size++;
+  pthread_mutex_unlock(&q->lock);
+}
+
+void queue_t_prepend(queue_t *q, void *v)
+{
+  pthread_mutex_lock(&q->lock);
+  node_t_unshift(v, &q->head);
+  q->size++;
+  pthread_mutex_unlock(&q->lock);
+}
+
+void *queue_shift(queue_t *q)
+{
+  node_t *t = NULL;
+  pthread_mutex_lock(&q->lock);
+
+  if (q->size > 0)
+  {
+    t = node_t_shift(&q->head);
+    q->size--;
+  }
+
+  pthread_mutex_unlock(&q->lock);
+  return t;
+}
+
+size_t queue_size(queue_t *q)
+{
+  return q->size;
+}
+
+void queue_destroy(queue_t *q)
+{
+  pthread_mutex_destroy(&q->lock);
+  node_t_destroy(q->head);
+  free(q);
+}
+```
+
+While very rudimentary, I hope this can be useful for someone too.

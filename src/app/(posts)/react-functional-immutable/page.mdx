@@ -1,0 +1,195 @@
+export const metadata = {
+  title: "Debunking the Myth: React and Immutability",
+  description: "",
+  author: "lightningspirit",
+  date: "2023-11-22T21:12:00Z",
+  categories: ["react", "functional programming", "immutability"],
+};
+
+# Debunking the Myth: React and Immutability
+
+The title might be a bit provocative, but it captures a common misconception about React. Many blog posts and articles mention [React](https://react.dev/) in the same breath as immutability, unidirectional data flow, and pure or functional components. This often leads newcomers to believe that React inherently manages immutability and purity as seen in functional programming languages. In reality, this is not the case.
+
+React is a JavaScript library designed to work seamlessly with JavaScript, a language that is not purely functional. Consequently, React is not limited to purely functional paradigms. While React encourages certain best practices, like immutability, it's the developer's responsibility to implement them correctly.
+
+Let's explore some key concepts in React to clarify these misunderstandings, shall we?
+
+## The First Misconception: Component vs. PureComponent
+React initially introduced class-based components, where developers extended the `Component` class to create components. Here's a basic example borrowed from [react.dev](https://react.dev/reference/react/Component):
+```js
+class Greeting extends Component {
+  render() {
+    return <h1>Hello, {this.props.name}!</h1>;
+  }
+}
+```
+
+Later, React introduced `PureComponent`. The main difference, as described in [react.dev](https://react.dev/reference/react/PureComponent) is:
+> PureComponent is similar to Component but it skips re-renders for same props and state.
+
+This suggests that PureComponent only re-renders when there are changes in props or state, making it deterministic. Here's an example:
+
+```js
+class Greeting extends PureComponent {
+  render() {
+    return <h1>Hello, {this.props.name}!</h1>;
+  }
+}
+```
+`Greeting` component is pure because it does rerender only when props change, and it is deterministic because it will always render the same output for the same input - it's a function in the mathematical sense: can be memoized and paralelized.
+
+Now, let's have a look at the definition of a pure component
+> ...it skips re-renders for same props **and state**.
+
+and state?
+
+This introduces a subtle problem. Pure functions, by definition, cannot have internal state because state makes outputs non-deterministic. Therefore, `PureComponent` is not truly a pure function, as it can still hold state, challenging the idea that it behaves like a pure function.
+
+## The Evolution: `/Function(al)? components/`
+
+With the advent of Function Components, React developers gained a more efficient and streamlined way to build components. Function Components, combined with Hooks, offered a more powerful and flexible approach to handling state and side effects compared to class-based components.
+
+However, somewhere along the line, Function Components began to be referred to as _[functional components](https://duckduckgo.com/?q=functional+component+react)_ in many articles. This led to the mistaken belief that React had fully embraced immutability and functional programming principles.
+
+This misconception was further compounded by React's documentation, which outlined [rules](https://react.dev/reference/rules#components-and-hooks-must-be-pure) such as:
+
+> Components must be idempotent - React components are assumed to always return the same output with respect to their inputs - props, state, and context.
+
+Here, React assumes that state and context are inputs, managed by Hooks like `useState` and `useContext`. I believe the reason is because their state is managed internally by React and not by an external entity or local variable. But what happens when we introduce side effects into these supposedly "pure" components?
+
+## The Purity Dilemma
+
+Consider a custom hook usePersistence that writes to a synchronous persistence layer, such as local storage:
+
+```ts
+function usePersistence<T>(initialValue: T): [T, (value: T) => void] {
+  // Implementation that writes to local storage
+}
+```
+This hook introduces side effects by altering an external system. Despite React's guidelines, state and context managed through Hooks can still lead to non-idempotent behavior.
+
+If you're not convinced, let's take the following example from [react.dev](https://react.dev/blog/2023/03/16/introducing-react-dev):
+
+```js
+import { useState } from 'react';
+
+export default function Counter() {
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setCount(count + 1);
+  }
+
+  return (
+    <button onClick={handleClick}>
+      You pressed me {count} times
+    </button>
+  );
+}
+```
+This function component is not guaranteed to produce the same output every time it renders. The output depends on user interactions (e.g., clicking the button), making it inherently non-pure and non-idempotent.
+
+From the perspective of the computation, this function has side-effects because it holds state and alters an external system.
+
+Are you now convinced?
+
+## A New Paradigm: Server components
+
+React 18 introduced Server Components, a significant shift from traditional SSR (Server-Side Rendering). Unlike SSR, where the server sends HTML along with JavaScript that rehydrates and re-renders on the client side, Server Components only send HTML to the client. This approach skips the client-side rehydration, reducing the amount of JavaScript sent to the client and improving performance.
+
+### Key Principles of Server Components
+
+Server Components come with a set of rules that differentiate them from traditional components:
+
+- **No State or Side Effects**: Server Components cannot hold state or execute side effects on the frontend. They can, however, interact with server-side functions like database queries or file system operations.
+- **No stateful Hooks**: Server Components cannot use `useState`, `useContext`, or any other Hook that derives from them.
+- **Interoperability**: Server Components can call server-side APIs and pass data to Client Components, but they must adhere to the separation of client and server logic.
+
+Here's a simple example illustrating Server and Client Components:
+
+```js
+// clock.js
+'use client'
+function Clock() {
+  // empty initial state
+  const [time, setTime] = useState()
+
+  useEffect(() => {
+    const id = setInterval(() => setTime(new Date()), 1000)
+    return () => clearInterval(id)
+  }, [])
+
+  // SSR will render nothing
+  return time ? <time>{time.toLocaleString()}</time> : null
+}
+
+// app.js
+function App() {
+  // hipothetical call to a database
+  // assumes user is logged in
+  const user = db.getCurrentUser()
+  return (
+    <html>
+      <body>
+        Hello {user.name}, current time is: <Clock />
+      </body>
+    </html>
+  )
+}
+```
+The Clock component is a Client Component with side effects, while App is a Server Component that renders static HTML based on server-side data.
+
+Server components is absolutely new in React and also ressembles the way that we actually did frontend a decade ago. Also, this mix of Server and Client Components is also a response to a trend that were being filled in other frameworks called [islands](https://duckduckgo.com/?q=react+islands).
+
+## A Framework for Purity
+
+Something I noticed is that Server Components offer React developers the ability to create truly pure, idempotent components by managing the separation of concerns between the server and client. By using Server Components for rendering static content and limiting state management to Client Components, developers can build more predictable, bug-free and maintainable applications.
+
+It really depends on how to manage your set of components.
+
+Taking the silly examples above, here's an example of how you might refactor your codebase:
+
+```js
+// greet.js
+function Greet({ name }) {
+  return <>Hello {name}</>
+}
+
+// show-counter.js
+function ShowCounter({ count }) {
+  return <>You pressed me {count} times</>;
+}
+
+// counter.js
+'use client'
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <button onClick={() => setCount(count + 1)}>
+      <ShowCounter count={count} />
+    </button>
+  );
+}
+
+// app.js
+function App() {
+  // server-side call to a database
+  // assumes user is logged in
+  const user = db.getCurrentUser()
+  return (
+    <html>
+      <body>
+        <Greet {...user} />, current time is: <Clock />
+        <Counter />
+      </body>
+    </html>
+  )
+}
+```
+
+In this setup, `Greet` and `ShowCounter` are pure components that can be used anywhere. `Counter` manages state and interacts with components that handle state mutations. The `App` component handles all server-side effects, ensuring a clean separation between pure and impure logic.
+
+## Conclusion
+
+By embracing Server Components, React developers can better manage state and UI updates, minimizing bugs and enhancing performance. I truly believe that this division of components into pure functions and stateful logic helps create a more maintainable and predictable codebase.

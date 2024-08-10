@@ -5,8 +5,7 @@ import "./global.css";
 import { Header } from "@/components/header";
 import Footer from "@/components/footer";
 import { baseUrl } from "./sitemap";
-
-const cx = (...classes: string[]) => classes.filter(Boolean).join(' ')
+import cx from "@/cx";
 
 const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter', })
 const lora = Lora({ subsets: ['latin'], display: 'swap', variable: '--font-lora', })
@@ -54,7 +53,11 @@ export default function RootLayout({
     >
       <body className="antialiased max-w-screen-md mx-4 mt-8 mb-16 lg:mx-auto space-y-16">
         <Header />
-        <main className="prose dark:prose-invert prose-ul:pl-0 mt-6">
+        <main className={cx(
+          "prose dark:prose-invert prose-ul:pl-0",
+          "prose-code:before:content-none prose-code:after:content-none",
+          "mt-6"
+        )}>
           {children}
         </main>
         <Footer />
