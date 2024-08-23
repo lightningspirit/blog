@@ -51,7 +51,7 @@ export default function RootLayout({
         lora.variable,
       )}
     >
-      <body className="antialiased max-w-screen-md mx-4 mt-8 mb-16 lg:mx-auto space-y-16">
+      <body className="antialiased max-w-screen-md min-h-svh grid grid-rows-[auto_1fr_auto] mx-4 pt-8 pb-16 lg:mx-auto space-y-16">
         <Header />
         <main className={cx(
           "prose dark:prose-invert prose-ul:pl-0",

@@ -1,12 +1,15 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import Avatar from './avatar.jpg';
-import Image from '@moveyourdigital/nextjs-imagerycloud';
 
 export function Header() {
   return (
     <header className="flex flex-col gap-6 sm:justify-between sm:items-center sm:flex-row">
       <Link href="/" className="flex space-x-3 items-center">
-        <Image src={Avatar} width={25} height={25} className="w-auto rounded-full shadow border-2 border-neutral-500 dark:border-neutral-300" alt="" />
+        <img
+          src="data:image/jpg;base64,/9j/4QC8RXhpZgAASUkqAAgAAAAGABIBAwABAAAAAQAAABoBBQABAAAAVgAAABsBBQABAAAAXgAAACgBAwABAAAAAgAAABMCAwABAAAAAQAAAGmHBAABAAAAZgAAAAAAAABIAAAAAQAAAEgAAAABAAAABgAAkAcABAAAADAyMTABkQcABAAAAAECAwAAoAcABAAAADAxMDABoAMAAQAAAP//AAACoAQAAQAAADAAAAADoAQAAQAAADEAAAAAAAAA/9sAQwAGBAUGBQQGBgUGBwcGCAoQCgoJCQoUDg8MEBcUGBgXFBYWGh0lHxobIxwWFiAsICMmJykqKRkfLTAtKDAlKCko/9sAQwEHBwcKCAoTCgoTKBoWGigoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgo/8AAEQgAMQAwAwEiAAIRAQMRAf/EABwAAAEEAwEAAAAAAAAAAAAAAAYABAUHAQIIA//EADgQAAECBAMGAQgLAQAAAAAAAAECAwAEBREGEiEHEzFBUWFxFCIyM4GRobIXIzY4QnJ1doKxwbP/xAAZAQEAAwEBAAAAAAAAAAAAAAAFAAEEAwL/xAAkEQACAgECBgMBAAAAAAAAAAABAwACEQQTEiEiMUGBMjPBkf/aAAwDAQACEQMRAD8A5WsY3YbW66ENpKlngANTGxcUdAAT4RKYSfDGIpN531aFErNuVtYjbGtTYeJ0VQXuKnyYYYe2VYgq7aXlsJYayhat4rzrdQIGsb4VmcMzqUPELYc9WvrbiD3joXCeM6RMyz6JV6YdcabJU3uyFWHE94r7aPmxdQ1TrMlMyLUm6pSVzIsHBlN/bpASNc8uAaMDz+Rt+iVsnb5nx+ylYzGI2yqtextDsAj5Uq15QGkKzKzEaHoT/kOaDURSa3LOkDdNPhSudwNI1oNBnq06RJtgNg2U6vRI7X5nsILH9noapxU3Nl2dBvlKcqCOg7+MZ2tXXoue81KUy2L0r2h8caywr0vL0+lOuoS2bbhKUAqKdDmOlteUQe0DGk8/hqdp9Sk0y7jykhi9ipST6RNuliAfCIKlStXpDLbKkOlKdd3vS2to9QeYMHbWC3p6hzlcrEsjMENgS6iVBDRUAASeKyTmv2gbbSlgOM++cas1jVkZwT/BOfw4ocD2j0cmA4pKi02CONrjN8Ys2p4IpLmcsJelzfTKu49xgCxHQpihzSG3lJcbcF23E8x4cjDKtStpwO8DbpWKGT2lpYZlxT6XKywtmSlJV+ZQuT74nCu6XNeGkQ7V0hBJIUCEnvD9ld21HmTBN+o5MbqMDAlkbRajRMM4RpdYnqK3UqilhtDRBCdAkarPQEgcCYl67VqfO7Kw/LqQ0uelmXw0fSzEpUR7OECG1yq4O+jVKHAKg42dzLeSvGzbyk65lC4t5puD09sBchtGUxgOh0eUpTIbmZbyaYnHh5y1JVlOWx4gZTr1iDTi1BcDnM+518JPKek6r6m19SRAftHaExQ0PAXUy8BfoCLH42grmlXCQOsRdSbTOU6dllAapIF+AI1vFpPBYWnZtOOhrHf4R4o/yHDHD+cKFFmehImq/d+X+4j/AMYEaN9k5D9Tc+RqFChCvw9ww/Z6lhPemnxP9RFq4VDxX8sKFB1Ynaf/2Q=="
+          className="w-8 h-8 rounded-full shadow border-2 border-neutral-500 dark:border-neutral-300"
+          alt="Me"
+        />
         <span className="text-xl sm:text-3xl font-serif font-bold">Lightningspirit&apos;s Blog</span>
       </Link>
       <ul className="font-sm flex space-x-2 text-neutral-600 dark:text-neutral-300">
