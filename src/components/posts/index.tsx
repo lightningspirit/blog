@@ -12,8 +12,8 @@ export function Posts({ posts }: { posts: Post[] }) {
             })}{" "}
           </p>
           <div className="space-y-1 lg:table-cell">
-            <h2 className="font-serif text-xl">
-              <Link href={`/${slug}`}>{title}</Link>
+            <h2 className="!text-3xl">
+              <Link href={`/${slug}`} className="!no-underline">{title}</Link>
             </h2>
             <p className="text-base">
               {description}

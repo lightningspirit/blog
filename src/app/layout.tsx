@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Lora, Inter } from 'next/font/google';
+import { Gentium_Book_Plus } from 'next/font/google';
 
 import "./global.css";
 import { Header } from "@/components/header";
@@ -7,8 +7,7 @@ import Footer from "@/components/footer";
 import { baseUrl } from "./sitemap";
 import cx from "@/cx";
 
-const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter', })
-const lora = Lora({ subsets: ['latin'], display: 'swap', variable: '--font-lora', })
+const cardo = Gentium_Book_Plus({ subsets: ['latin'], display: 'swap', variable: '--font-cardo', style: ["italic", "normal"], weight: ["400", "700"], })
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -47,15 +46,15 @@ export default function RootLayout({
     <html
       lang="en"
       className={cx(
-        inter.variable,
-        lora.variable,
+        cardo.className,
       )}
     >
       <body className="antialiased max-w-screen-md min-h-svh grid grid-rows-[auto_1fr_auto] mx-4 pt-8 pb-16 lg:mx-auto space-y-16">
         <Header />
         <main className={cx(
-          "prose dark:prose-invert prose-ul:pl-0",
+          "prose prose-xl dark:prose-invert prose-ul:pl-0",
           "prose-code:before:content-none prose-code:after:content-none",
+          "prose-pre:text-wrap prose-pre:whitespace-nowrap",
           "mt-6"
         )}>
           {children}

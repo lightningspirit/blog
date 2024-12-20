@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  text-rendering: optimizeLegibility;
+  font-kerning: auto
+}
+
 ::selection {
   background-color: black;
   color: white;
@@ -39,7 +44,13 @@
 
 html {
   min-width: 360px;
-  font-size: 18px;
+  font-size: 20px;
+  -webkit-text-size-adjust: 100%
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  counter-reset: sidenote-counter;
 }
 
 .prose .anchor {
