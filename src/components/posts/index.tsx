@@ -3,19 +3,19 @@ import Link from "next/link";
 
 export function Posts({ posts }: { posts: Post[] }) {
   return (
-    <ul className="!list-none !list-outside !pl-0 !table">
+    <ul className="!pl-0">
       {posts.map(({ slug, title, description, date }) => (
         <li key={slug} className="table-row">
-          <p className="text-sm !text-zinc-500 proportional-nums lg:pt-3 w-32">
+          <time className="text-base !text-zinc-500 proportional-nums whitespace-nowrap lg:pr-3">
             {new Date(date).toLocaleDateString("en-US", {
               dateStyle: "medium",
             })}{" "}
-          </p>
-          <div className="space-y-1 lg:table-cell">
-            <h2 className="!text-3xl">
+          </time>
+          <div className="pb-3 lg:pl-3 lg:table-cell">
+            <h2 className="!my-0">
               <Link href={`/${slug}`} className="!no-underline">{title}</Link>
             </h2>
-            <p className="text-base">
+            <p className="my-0">
               {description}
             </p>
           </div>

@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
 import { Gentium_Book_Plus } from 'next/font/google';
-
-import "./global.css";
 import { Header } from "@/components/header";
 import Footer from "@/components/footer";
 import { baseUrl } from "./sitemap";
 import cx from "@/cx";
 
-const cardo = Gentium_Book_Plus({ subsets: ['latin'], display: 'swap', variable: '--font-cardo', style: ["italic", "normal"], weight: ["400", "700"], })
+import "./global.css";
+
+const font = Gentium_Book_Plus({
+  style: ["italic", "normal"],
+  weight: ["400", "700"],
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -46,15 +51,15 @@ export default function RootLayout({
     <html
       lang="en"
       className={cx(
-        cardo.className,
+        font.className,
       )}
     >
-      <body className="antialiased max-w-screen-md min-h-svh grid grid-rows-[auto_1fr_auto] mx-4 pt-8 pb-16 lg:mx-auto space-y-16">
+      <body className="antialiased max-w-screen-md min-h-svh grid grid-rows-[auto_1fr_auto] mx-4 pt-12 pb-16 lg:mx-auto space-y-16">
         <Header />
         <main className={cx(
-          "prose prose-xl dark:prose-invert prose-ul:pl-0",
+          "prose lg:prose-lg dark:prose-invert",
+          "prose-headings:font-medium",
           "prose-code:before:content-none prose-code:after:content-none",
-          "prose-pre:text-wrap prose-pre:whitespace-nowrap",
           "mt-6"
         )}>
           {children}

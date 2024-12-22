@@ -107,9 +107,9 @@ Server Components come with a set of rules that differentiate them from traditio
 
 Here's a simple example illustrating Server and Client Components:
 
-```js
-// clock.js
+```js clock.js
 'use client'
+
 function Clock() {
   // empty initial state
   const [time, setTime] = useState()
@@ -122,10 +122,11 @@ function Clock() {
   // SSR will render nothing
   return time ? <time>{time.toLocaleString()}</time> : null
 }
-
-// app.js
+```
+<br />
+```js app.js
 function App() {
-  // hipothetical call to a database
+  // hypothetical call to a database
   // assumes user is logged in
   const user = db.getCurrentUser()
   return (
@@ -149,19 +150,21 @@ It really depends on how to manage your set of components.
 
 Taking the silly examples above, here's an example of how you might refactor your codebase:
 
-```js
-// greet.js
+```js greet.js
 function Greet({ name }) {
   return <>Hello {name}</>
 }
-
-// show-counter.js
+```
+<br />
+```js show-counter.js
 function ShowCounter({ count }) {
   return <>You pressed me {count} times</>;
 }
-
-// counter.js
+```
+<br />
+```js counter.js
 'use client'
+
 function Counter() {
   const [count, setCount] = useState(0);
 
@@ -171,8 +174,9 @@ function Counter() {
     </button>
   );
 }
-
-// app.js
+```
+<br />
+```js app.js
 function App() {
   // server-side call to a database
   // assumes user is logged in
